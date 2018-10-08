@@ -58,6 +58,7 @@
     <Compile Include="Concrete\Managers\AdvertisementManager.cs" />
     <Compile Include="Concrete\Managers\CategoryManager.cs" />
     <Compile Include="Concrete\Managers\ContentManager.cs" />
+    <Compile Include="Concrete\Managers\LoginManager.cs" />
     <Compile Include="Concrete\Managers\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

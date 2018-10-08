@@ -49,14 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="DatabaseInitıalizer\Initializer.cs" />
     <Compile Include="EntityFramework\DatabaseContext.cs" />
     <Compile Include="EntityFramework\GenericRepository.cs" />
     <Compile Include="EntityFramework\RepositoryBase.cs" />
-    <Compile Include="Migrations\201810062019075_first.cs" />
-    <Compile Include="Migrations\201810062019075_first.Designer.cs">
-      <DependentUpon>201810062019075_first.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,11 +66,6 @@
       <Project>{e9155f69-eaec-49e8-b320-75def6abfb90}</Project>
       <Name>FanusYazilim.Entities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810062019075_first.resx">
-      <DependentUpon>201810062019075_first.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

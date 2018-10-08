@@ -16,7 +16,6 @@ namespace FanusYazilim.Entities
         [StringLength(72)]
         public string Email { get; set; }
         public string Password { get; set; }
-
         public Guid SecurityGuid { get; set; }
     }
 }

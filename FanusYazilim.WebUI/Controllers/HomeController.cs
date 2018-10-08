@@ -1,5 +1,7 @@
 ﻿using FanusYazilim.BusinessLayer.Concrete.Managers;
+using FanusYazilim.BusinessLayer;
 using FanusYazilim.Entities;
+using FanusYazilim.WebUI.Authorization;
 using FanusYazilim.WebUI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -9,11 +11,13 @@ using System.Web.Mvc;
 
 namespace FanusYazilim.WebUI.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private CategoryManager _CategoryRepo = new CategoryManager();
         private AdvertisementManager _AdvertisementRepo = new AdvertisementManager();
-        private ContentManager _ContentRepo = new ContentManager(); 
+        private ContentManager _ContentRepo = new ContentManager();
+        private LoginManager _loginManager = new LoginManager();
+
 
         #region Category
 
@@ -116,12 +120,43 @@ namespace FanusYazilim.WebUI.Controllers
 
             return View();
         }
-    
+
         #endregion
 
+        #region Statistics
         public ActionResult Statistics()
         {
             return View();
         }
+
+        #endregion
+
+
+        [HttpGet]
+        #region ChangePassword
+
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        #endregion
+        
+        [HttpPost]
+        
+        #region ChangePassword
+
+        public ActionResult ChangePassword(ChangePasswordViewModel model)
+        {
+            if (_loginManager.ChangePassword(model.OldPassword , model.Password))
+                ViewBag.Success = "Parola Değiştirme Başarılı.";
+            else
+                ViewBag.Fail = "Eski Parola Hatalı.";
+
+            return View();
+        }
+
+        #endregion
+
     }
 }

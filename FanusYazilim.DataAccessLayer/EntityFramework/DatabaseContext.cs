@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FanusYazilim.Entities;
+using FanusYazilim.Entities.Hash_SHA1;
+using FanusYazilim.DataAccessLayer.DatabaseInitıalizer;
 
 namespace FanusYazilim.DataAccessLayer.EntityFramework
 {
@@ -12,7 +14,7 @@ namespace FanusYazilim.DataAccessLayer.EntityFramework
     {
         public DatabaseContext():base("GlobalHikayeMatik")
         {
-            
+            Database.SetInitializer(new Initializer());
         }
 
         public virtual DbSet<User> Users { get; set; }
@@ -22,7 +24,7 @@ namespace FanusYazilim.DataAccessLayer.EntityFramework
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+          
         }
     }
 }
