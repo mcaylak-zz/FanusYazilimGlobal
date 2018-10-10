@@ -23,6 +23,7 @@ namespace FanusYazilim.WebUI
 
             routes.MapRoute("Category", "Category", new { controller = "Home", action = "Category" });
             routes.MapRoute("AddCategory", "AddCategory", new { controller = "Home", action = "AddCategory" });
+            routes.MapRoute("DeleteCategory", "DeleteCategory/{categoryId}", new { controller = "Home", action = "DeleteCategory" });
 
             routes.MapRoute("Advertisement", "Advertisement", new { controller = "Home", action = "Advertisement" });
             routes.MapRoute("AddAdvertisement", "AddAdvertisement", new { controller = "Home", action = "AddAdvertisement" });
@@ -31,6 +32,7 @@ namespace FanusYazilim.WebUI
             routes.MapRoute("Content", "Content", new { controller = "Home", action = "Content" });
             routes.MapRoute("Contents", "Contents", new { controller = "Home", action = "Contents" });
             routes.MapRoute("AddContent", "AddContent", new { controller = "Home", action = "AddContent" });
+            routes.MapRoute("Deletecontent", "DeleteContent{ContentID}", new { controller = "Home", action = "DeleteContent" });
 
             routes.MapRoute("Statistics", "Statistics", new { controller = "Home", action = "Statistics" });
 

@@ -13,9 +13,9 @@ namespace FanusYazilim.BusinessLayer.Concrete.Mail
         public static void MailSend(string receiver, string subject, string content)
         {
             #region mailGonderme
-            var fromAddress = new MailAddress("infosautoyota@gmail.com", "Parola Değiştir");
+            var fromAddress = new MailAddress("info@hikayecimatik.com", "Parola Değiştir");
             var toAddress = new MailAddress(receiver, "To Name");
-            const string fromPassword = "Toyota12*";
+            const string fromPassword = "a4wLrpEf";
             
             
             var smtp = new SmtpClient

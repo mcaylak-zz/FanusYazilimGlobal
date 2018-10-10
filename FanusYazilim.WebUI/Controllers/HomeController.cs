@@ -18,7 +18,6 @@ namespace FanusYazilim.WebUI.Controllers
         private ContentManager _ContentRepo = new ContentManager();
         private LoginManager _loginManager = new LoginManager();
 
-
         #region Category
 
 
@@ -110,22 +109,51 @@ namespace FanusYazilim.WebUI.Controllers
         [HttpPost]
         public ActionResult AddContent(CategoryViewModel categoryViewModel,String Content)
         {
-            Category insert = _CategoryRepo.Find(r => r.CategoryID == categoryViewModel.CategoryID);
-            Content add = new Content();
-            add.Description = Content;
-            add.CategoryID = insert.CategoryID;
-            insert.Contents.Add(add);
-            _CategoryRepo.Update(insert);
+            Category _category = _CategoryRepo.Find(r => r.CategoryID == categoryViewModel.CategoryID);
+            Content _content = new Content();
+            _content.Description = Content;
+            _content.CategoryID = _category.CategoryID;
+            _category.Contents.Add(_content);
+            _ContentRepo.Insert(_content);
             
 
-            return View();
+            return RedirectToAction("Content");
         }
-
+        
+        public ActionResult DeleteContent(int ContentID)
+        {
+            _ContentRepo.Delete(_ContentRepo.Find(r => r.ContentID == ContentID));
+            return RedirectToAction("Contents");
+        }
         #endregion
 
         #region Statistics
         public ActionResult Statistics()
         {
+            List<StatisticsViewModel> _categoryStatistics = new List<StatisticsViewModel>();
+            List<StatisticsViewModel> _contentPrintingCounts = new List<StatisticsViewModel>();
+
+            List<Category> list = _CategoryRepo.AllList();
+            List<Content> _list = _ContentRepo.AllList();
+
+            StatisticsViewModel model = new StatisticsViewModel();
+
+            foreach (var item in list)
+            {
+                model.Name = item.Name;
+                model.DisplayLength = item.DisplayLength;
+                _categoryStatistics.Add(model);
+            }
+            foreach (var item in _list)
+            {
+                model.Name = item.Description.Substring(0,20);
+                model.DisplayLength = item.PrintLength;
+                _contentPrintingCounts.Add(model);
+            }
+
+            ViewBag.Content = _contentPrintingCounts;
+            ViewBag.Category = _categoryStatistics;
+
             return View();
         }
 

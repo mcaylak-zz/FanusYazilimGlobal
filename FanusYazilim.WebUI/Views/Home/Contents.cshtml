@@ -27,7 +27,7 @@
                         @foreach (var i in item.Contents)
                         {
                             <tr>
-                                <td>@i.Description</td>
+                                <td>@i.Description <a style="float:right;" class="btn btn-danger" href="@Url.Action("DeleteContent","Home",new { ContentID = i.ContentID} )" >Sil</a></td>
                             </tr>
                         }
                     </table>

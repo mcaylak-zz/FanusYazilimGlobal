@@ -1,4 +1,20 @@
-﻿
+﻿@using FanusYazilim.WebUI.ViewModels
+@{
+    List<StatisticsViewModel> _category = new List<StatisticsViewModel>();
+    List<StatisticsViewModel> _content = new List<StatisticsViewModel>();
+
+    foreach (var item in ViewBag.Category)
+    {
+        _category.Add(item);
+    }
+
+    foreach (var item in ViewBag.Content)
+    {
+        _content.Add(item);
+    }
+
+
+}
 @{
     ViewBag.Title = "Statistics";
     Layout = "~/Views/_layout.cshtml";
@@ -8,15 +24,40 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-
+            <table class="table table-hover">
+                <tr>
+                    <th>Kategori İsmi</th>
+                    <th>Kategori Görüntülenme Sayısı</th>
+                </tr>
+                <tr>
+                    @foreach (var item in _category)
+                    {
+                        <td>@item.Name</td>
+                        <td>@item.DisplayLength</td>
+                    }
+                </tr>
+                </table>
 
         </div>
         <div class="col-md-6">
-
+            <table class="table table-hover">
+                <tr>
+                    <th>İçerik İsmi</th>
+                    <th>İçerik Çıktı Alınma Sayısı</th>
+                </tr>
+           
+                <tr>
+                    @foreach (var item in _content)
+                    {
+                        <td>@item.Name</td>
+                        <td>@item.DisplayLength</td>
+                    }
+                </tr>
+            </table>
 
         </div>
     </div>
-    
+
 </div>
 
 

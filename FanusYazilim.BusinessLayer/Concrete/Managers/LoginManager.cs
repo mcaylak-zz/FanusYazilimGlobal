@@ -32,7 +32,7 @@ namespace FanusYazilim.BusinessLayer.Concrete.Managers
             {
                 User user = _manager.Find(r => r.Email == email.ToLower());
                 string content = "Parolanızı değiştirmek için aşağıdaki linke tıklayınız.\r\n\r\n"+
-                  "http://localhost:57196/NewPassword/" + user.SecurityGuid.ToString();
+                  "http://www.hikayecimatik.com/NewPassword/" + user.SecurityGuid.ToString();
 
 
                 SendMail.MailSend(email, "Parola Değiştirme", content);
