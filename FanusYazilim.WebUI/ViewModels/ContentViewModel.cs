@@ -9,5 +9,7 @@ namespace FanusYazilim.WebUI.ViewModels
     {
         public int ContentID { get; set; }
         public string Description { get; set; }
+        public string Head { get; set; }
+
     }
 }

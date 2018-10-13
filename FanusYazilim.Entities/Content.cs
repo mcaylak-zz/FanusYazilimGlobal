@@ -15,10 +15,9 @@ namespace FanusYazilim.Entities
         public int ContentID { get; set; }
         [StringLength(5000)]
         public string Description { get; set; }
+        public string Head { get; set; }
         public int DisplayLength { get; set; }
         public int PrintLength { get; set; }
-
-
         public virtual int CategoryID { get; set; }
         public virtual Category Category { get; set; }
     }

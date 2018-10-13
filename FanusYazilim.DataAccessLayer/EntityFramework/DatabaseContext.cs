@@ -21,6 +21,7 @@ namespace FanusYazilim.DataAccessLayer.EntityFramework
         public virtual DbSet<Advertisement> Advertisements { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Content> Contents { get; set; }
+        public virtual DbSet<Transection> Transections { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

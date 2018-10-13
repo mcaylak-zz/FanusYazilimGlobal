@@ -27,6 +27,9 @@ namespace FanusYazilim.WebUI
 
             routes.MapRoute("Advertisement", "Advertisement", new { controller = "Home", action = "Advertisement" });
             routes.MapRoute("AddAdvertisement", "AddAdvertisement", new { controller = "Home", action = "AddAdvertisement" });
+            routes.MapRoute("DeleteAdvertisement", "DeleteAdvertisement{AdvertisementID}", new { controller = "Home", action = "DeleteAdvertisement" });
+            
+
 
 
             routes.MapRoute("Content", "Content", new { controller = "Home", action = "Content" });
@@ -47,7 +50,9 @@ namespace FanusYazilim.WebUI
 
             routes.MapRoute("Login", "Login", new { controller = "Login", action = "Login" });
             routes.MapRoute("ForgotPass", "ForgotPassword", new { controller = "Login", action = "ForgotPassword" });
-            
+
+            routes.MapRoute("Transection", "Transection", new { controller = "Home", action = "Transection" });
+
         }
     }
 }

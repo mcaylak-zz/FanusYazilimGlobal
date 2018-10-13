@@ -24,39 +24,45 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <table class="table table-hover">
-                <tr>
-                    <th>Kategori İsmi</th>
-                    <th>Kategori Görüntülenme Sayısı</th>
-                </tr>
-                <tr>
-                    @foreach (var item in _category)
-                    {
-                        <td>@item.Name</td>
-                        <td>@item.DisplayLength</td>
-                    }
-                </tr>
-                </table>
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
 
-        </div>
+
+                    
+                        <tr>
+                            <th>Kategori İsmi</th>
+                            <th>Kategori Görüntülenme Sayısı</th>
+                        </tr>
+                        <tr>
+                            @foreach (var item in _category)
+                            {
+                                <td>@item.Name</td>
+                                <td>@item.DisplayLength</td>
+                            }
+                        </tr>
+                    </table>
+             </div>   
+            </div>
         <div class="col-md-6">
-            <table class="table table-hover">
-                <tr>
-                    <th>İçerik İsmi</th>
-                    <th>İçerik Çıktı Alınma Sayısı</th>
-                </tr>
-           
-                <tr>
-                    @foreach (var item in _content)
-                    {
-                        <td>@item.Name</td>
-                        <td>@item.DisplayLength</td>
-                    }
-                </tr>
-            </table>
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    
+                        <tr>
+                            <th>İçerik İsmi</th>
+                            <th>İçerik Çıktı Alınma Sayısı</th>
+                        </tr>
 
+                        <tr>
+                            @foreach (var item in _content)
+                            {
+                                <td>@item.Name</td>
+                                <td>@item.DisplayLength</td>
+                            }
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
 
 </div>
 

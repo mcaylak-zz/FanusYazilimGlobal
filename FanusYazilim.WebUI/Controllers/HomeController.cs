@@ -17,13 +17,14 @@ namespace FanusYazilim.WebUI.Controllers
         private AdvertisementManager _AdvertisementRepo = new AdvertisementManager();
         private ContentManager _ContentRepo = new ContentManager();
         private LoginManager _loginManager = new LoginManager();
-
+        private TransectionManager _transection = new TransectionManager();
         #region Category
 
 
         public ActionResult Category()
         {
             List<Category> _categoryList = new List<Category>();
+            
             _categoryList = _CategoryRepo.AllList();
             return View(_categoryList);
         }
@@ -32,6 +33,7 @@ namespace FanusYazilim.WebUI.Controllers
         {
             Category add = new Category();
             add.Name = model.Name;
+            add.CategoryImageUrl = model.CategoryImageUrl;
             _CategoryRepo.Insert(add);
             List<Category> _categoryList = new List<Category>();
             _categoryList = _CategoryRepo.AllList();
@@ -76,9 +78,9 @@ namespace FanusYazilim.WebUI.Controllers
             _AdvertisementRepo.Insert(add);
             return RedirectToAction("Advertisement");
         }
-        public ActionResult DeleteAdvertisement(AdvertisementViewModel advertisementViewModel)
+        public ActionResult DeleteAdvertisement(int AdvertisementID)
         {
-            Advertisement delete = _AdvertisementRepo.Find(r => r.AdvertisementID == advertisementViewModel.AdvertisementID);
+            Advertisement delete = _AdvertisementRepo.Find(r => r.AdvertisementID == AdvertisementID);
             _AdvertisementRepo.Delete(delete);
             return RedirectToAction("Advertisement");
         }
@@ -107,14 +109,17 @@ namespace FanusYazilim.WebUI.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddContent(CategoryViewModel categoryViewModel,String Content)
+        public ActionResult AddContent(CategoryViewModel categoryViewModel,String Content,String Head)
         {
             Category _category = _CategoryRepo.Find(r => r.CategoryID == categoryViewModel.CategoryID);
+            
             Content _content = new Content();
             _content.Description = Content;
             _content.CategoryID = _category.CategoryID;
-            _category.Contents.Add(_content);
+            _content.Head = Head;
             _ContentRepo.Insert(_content);
+            _category.Contents.Add(_content);
+            
             
 
             return RedirectToAction("Content");
@@ -156,6 +161,12 @@ namespace FanusYazilim.WebUI.Controllers
 
             return View();
         }
+        [HttpGet]
+        public ActionResult Transection()
+        {
+            return View(_transection.AllList());
+        }
+
 
         #endregion
 

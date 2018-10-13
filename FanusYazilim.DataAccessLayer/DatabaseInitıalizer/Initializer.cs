@@ -16,7 +16,7 @@ namespace FanusYazilim.DataAccessLayer.DatabaseInitıalizer
         {
             User _user = new User()
             {
-                Email = "Aytekinerlale@gmail.com".ToLower(),
+                Email = "emircnaslan@gmail.com".ToLower(),
                 Password = Sha.Encoder("admin123"),
                 SecurityGuid = Guid.NewGuid()
             };
