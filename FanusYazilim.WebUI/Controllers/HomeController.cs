@@ -135,31 +135,11 @@ namespace FanusYazilim.WebUI.Controllers
         #region Statistics
         public ActionResult Statistics()
         {
-            List<StatisticsViewModel> _categoryStatistics = new List<StatisticsViewModel>();
-            List<StatisticsViewModel> _contentPrintingCounts = new List<StatisticsViewModel>();
+            List<Content> count = new List<Content>();
+           
+            
 
-            List<Category> list = _CategoryRepo.AllList();
-            List<Content> _list = _ContentRepo.AllList();
-
-            StatisticsViewModel model = new StatisticsViewModel();
-
-            foreach (var item in list)
-            {
-                model.Name = item.Name;
-                model.DisplayLength = item.DisplayLength;
-                _categoryStatistics.Add(model);
-            }
-            foreach (var item in _list)
-            {
-                model.Name = item.Description.Substring(0,20);
-                model.DisplayLength = item.PrintLength;
-                _contentPrintingCounts.Add(model);
-            }
-
-            ViewBag.Content = _contentPrintingCounts;
-            ViewBag.Category = _categoryStatistics;
-
-            return View();
+            return View(count);
         }
         [HttpGet]
         public ActionResult Transection()
